@@ -1,0 +1,193 @@
+
+/* =========================================================
+   CampusHub — Shared Professional Styles
+   ========================================================= */
+
+:root {
+  --ch-navy: #0f172a;
+  --ch-blue: #2563eb;
+  --ch-blue-dark: #1d4ed8;
+  --ch-green: #16a34a;
+  --ch-gold: #f59e0b;
+  --ch-bg: #f8fafc;
+  --ch-text: #172033;
+  --ch-muted: #64748b;
+  --ch-border: #e2e8f0;
+  --ch-radius: 18px;
+  --ch-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+  --ch-shadow-hover: 0 18px 42px rgba(15, 23, 42, 0.14);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--ch-bg);
+  color: var(--ch-text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+body > header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.14) !important;
+}
+
+.campushub-mobile-header > div:first-child {
+  min-height: 72px;
+}
+
+.campushub-mobile-header nav a {
+  position: relative;
+  display: inline-block;
+  transition:
+    color 180ms ease,
+    transform 180ms ease,
+    opacity 180ms ease;
+}
+
+.campushub-mobile-header nav a:hover {
+  transform: translateY(-1px);
+}
+
+.campushub-mobile-header nav a.border-b-2 {
+  border-bottom-width: 2px !important;
+  border-color: var(--ch-gold) !important;
+}
+
+main {
+  animation: campusHubFadeIn 350ms ease-out;
+}
+
+@keyframes campusHubFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Better default buttons */
+button,
+a[class*="bg-main"],
+a[class*="bg-blue-"],
+button[class*="bg-main"],
+button[class*="bg-blue-"] {
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    background-color 180ms ease;
+}
+
+button:hover,
+a[class*="bg-main"]:hover,
+a[class*="bg-blue-"]:hover,
+button[class*="bg-main"]:hover,
+button[class*="bg-blue-"]:hover {
+  transform: translateY(-1px);
+}
+
+/* Cards and bordered content blocks */
+main .rounded-xl,
+main .rounded-2xl,
+main .rounded-3xl {
+  transition:
+    box-shadow 180ms ease,
+    transform 180ms ease,
+    border-color 180ms ease;
+}
+
+main .rounded-xl:hover,
+main .rounded-2xl:hover {
+  box-shadow: var(--ch-shadow-hover);
+}
+
+/* Images */
+main img {
+  max-width: 100%;
+}
+
+main img.rounded-xl,
+main img.rounded-2xl,
+main img.rounded-3xl {
+  object-fit: cover;
+}
+
+/* Forms */
+input,
+select,
+textarea {
+  border-color: var(--ch-border);
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--ch-blue) !important;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.14);
+}
+
+/* Tables */
+table tbody tr {
+  border-top: 1px solid var(--ch-border);
+  transition: background-color 150ms ease;
+}
+
+table tbody tr:hover {
+  background: #f8fafc;
+}
+
+/* Accessible focus */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid rgba(245, 158, 11, 0.45);
+  outline-offset: 3px;
+}
+
+/* Section rhythm */
+section + section {
+  scroll-margin-top: 90px;
+}
+
+/* Footer */
+footer {
+  border-top: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+@media (min-width: 768px) {
+  body > main {
+    padding-top: 72px;
+  }
+}
+
+@media (max-width: 767px) {
+  .campushub-mobile-header > div:first-child {
+    min-height: 64px;
+  }
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
