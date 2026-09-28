@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+     <title>CampusHub: Orientation Week at PNC</title>
+
+     <!-- Tailwind CDN -->
+     <script src="https://cdn.tailwindcss.com"></script>
+
+     <!-- Google Fonts -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+     <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;700&family=Sora:wght@400;600;700&display=swap"
+          rel="stylesheet">
+
+     <script>
+          tailwind.config = {
+               theme: {
+                    extend: {
+                         colors: {
+                              main: "#2563EB",
+                              mainHover: "#1D4ED8",
+                              mainLight: "#DBEAFE",
+                              second: "#8B5CF6",
+                              secondLight: "#E9D5FF",
+                              background: "#F8FAFC",
+                              mainText: "#172033",
+                              secondText: "#475569",
+                              footer: "#14241f",
+                              menuBar: "#0F172A",
+                              error: "#DC2626",
+                              warning: "#F59E0B",
+                              succes: "#16A34A"
+                         },
+
+                         fontFamily: {
+                              display: "serif",
+                              sans: ["Sora", "sans-serif"]
+                         }
+                    }
+               }
+          }
+     </script>
+     <link rel="stylesheet" href="../css/campushub.css">
+
+</head>
+
+
+<body class="min-h-screen flex flex-col bg-sand font-sans text-ink">
+
+     <!-- ================= NAVBAR ================= -->
+
+     <header class="bg-menuBar text-white shadow-md fixed top-0 left-0 w-full z-50">
+
+          <div class="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-4
+                    sm:px-6
+                    md:flex-row md:items-center md:justify-between
+                    lg:px-16">
+
+               <a href="../index.html" class="flex items-center gap-2 transition-opacity hover:opacity-90">
+
+                    <img src="../image/R1.png" alt="CampusHub Logo" class="h-12 w-12 rounded-lg object-cover">
+
+                    <div>
+
+                         <h1 class="text-base font-bold leading-tight">
+                              <span class="text-succes">Campus</span><span class="text-main">Hub</span>
+                         </h1>
+
+                         <p class="text-[8px] font-semibold tracking-wide text-slate-400">
+                              STUDENT HUB & COMMUNITY
+                         </p>
+
+                    </div>
+
+               </a>
+
+
+               <nav aria-label="Main navigation">
+
+                    <ul class="flex flex-wrap items-center justify-center
+                           gap-x-5 gap-y-2
+                           text-sm font-medium
+                           sm:gap-x-6
+                           md:gap-x-7
+                           lg:gap-x-8">
+
+                         <li>
+                              <a href="../index.html" class="pb-1 text-white hover:text-warning text-[16px]">
+                                   Home
+                              </a>
+                         </li>
+
+                         <li>
+                              <a href="../About/index.html" class="text-slate-200 transition hover:text-warning text-[16px]">
+                                   About
+                              </a>
+                         </li>
+
+                         <li>
+                              <a href="../club/index.html"
+                                   class="text-slate-200 transition hover:text-warning text-[16px]">
+                                   Clubs
+                              </a>
+                         </li>
+
+                         <li>
+                              <a href="index.html"
+                                   class="text-slate-200 transition hover:text-warning text-[16px] border-b-2 border-warning pb-1">
+                                   Events
+                              </a>
+                         </li>
+
+                         <li>
+                              <a href="../Announcement/index.html" class="text-slate-200 transition text-[16px]">
+                                   Announcements
+                              </a>
+                         </li>
+
+                    </ul>
+
+               </nav>
+
+          </div>
+
+     </header>
+
+
+     <!-- ================= MAIN ================= -->
+
+     <main class="flex-1 bg-background">
+
+
+          <!-- HERO -->
+
+          <section class="relative min-h-[520px] text-background px-4 py-16 md:min-h-[560px] md:py-24 xl:min-h-[450px]
+             bg-cover bg-center
+             bg-[url('../image/R2.png')]">
+
+               <!-- Dark overlay -->
+               <div class="absolute inset-0
+                  bg-gradient-to-r
+                  from-slate-950/85
+                  via-slate-950/60
+                  to-slate-950/25">
+               </div>
+
+
+               <div class="relative max-w-5xl mx-auto">
+
+                    <!-- Event category -->
+                    <h3 class="mb-3 text-[16px] font-bold uppercase tracking-[0.2em] text-warning pt-12">
+                         Student Life
+                    </h3>
+
+
+                    <!-- Event title -->
+                    <h1 class="font-display text-[38px] sm:text-[42px] md:text-[48px]
+                   font-bold mb-4">
+
+                         Orientation Week
+
+                    </h1>
+
+
+                    <div class="h-1 w-20 bg-warning mb-6"></div>
+
+
+                    <!-- Short description -->
+                    <p class="text-background/80 text-[16px]
+                  max-w-xl mb-8">
+
+                         Welcome to PNC! Join Orientation Week to meet new
+                         friends, learn about campus life, and discover
+                         student clubs and activities.
+
+                    </p>
+
+               </div>
+
+          </section>
+
+
+
+          <!-- ================= EVENT INFORMATION ================= -->
+
+          <section class="max-w-5xl mx-auto px-4 py-12">
+
+
+               <div class="grid grid-cols-1 sm:grid-cols-2
+                  gap-4 mb-8">
+
+
+                    <!-- DATE -->
+
+                    <div class="bg-white border border-main/50
+                    rounded p-4">
+
+                         <p class="text-main text-sm font-bold mb-1">
+                              Date
+                         </p>
+
+                         <p class="font-display text-lg font-bold">
+                              October 12–16, 2026
+                         </p>
+
+                    </div>
+
+
+
+                    <!-- TIME -->
+
+                    <div class="bg-white border border-main/50
+                    rounded p-4">
+
+                         <p class="text-main text-sm font-bold mb-1">
+                              Time
+                         </p>
+
+                         <p class="font-display text-lg font-bold">
+                              8:00 AM to 5:00 PM
+                         </p>
+
+                    </div>
+
+
+
+                    <!-- LOCATION -->
+
+                    <div class="bg-white border border-main/50
+                    rounded p-4">
+
+                         <p class="text-main text-sm font-bold mb-1">
+                              Location
+                         </p>
+
+                         <p class="font-display text-lg font-bold">
+                              PNC
+                         </p>
+
+                    </div>
+
+
+
+                    <!-- ORGANIZER -->
+
+                    <div class="bg-white border border-main/50
+                    rounded p-4">
+
+                         <p class="text-main text-sm font-bold mb-1">
+                              Organizer
+                         </p>
+
+                         <p class="font-display text-lg font-bold">
+                              PNC Student Affairs
+                         </p>
+
+                    </div>
+
+               </div>
+
+
+
+               <!-- ================= ABOUT EVENT ================= -->
+
+               <div class="bg-white border border-main/50
+                  rounded p-6 mb-8">
+
+                    <h2 class="font-display text-2xl font-bold mb-3">
+                         About this event
+                    </h2>
+
+
+                    <p class="text-ink/70 mb-3">
+
+                         Orientation Week is a special event for new
+                         PNC students. It will help students become
+                         familiar with the school, meet classmates,
+                         and learn more about student life.
+
+                    </p>
+
+
+                    <p class="text-ink/70">
+
+                         Students can join activities, discover
+                         student clubs, meet teachers and senior students,
+                         and learn important information about studying
+                         at PNC.
+
+                    </p>
+
+               </div>
+
+
+
+               <!-- ================= WHAT TO EXPECT ================= -->
+
+
+               <!-- BACK BUTTON -->
+
+               <a href="index.html" class="inline-block rounded
+               bg-main px-6 py-3
+               font-bold text-white
+               hover:bg-mainHover">
+
+                    Back Events
+
+               </a>
+
+          </section>
+
+     </main>
+
+
+
+     <!-- ================= FOOTER ================= -->
+
+     <footer class="mt-auto bg-[#14241f]/95 text-white">
+
+          <div class="max-w-6xl mx-auto px-4 py-16">
+
+               <div class="grid grid-cols-1 md:grid-cols-3
+                  gap-8 text-sm">
+
+
+                    <!-- ABOUT -->
+
+                    <div>
+
+                         <p class="font-display text-lg font-bold mb-2">
+                              CampusHub
+                         </p>
+
+                         <p class="text-white/60 mb-2">
+                              Find campus events, join clubs, and read
+                              important announcements.
+                         </p>
+
+                         <p class="text-white/60">
+                              PNC Campus
+                         </p>
+
+                    </div>
+
+
+
+                    <!-- QUICK LINKS -->
+
+                    <div>
+
+                         <p class="font-display text-lg font-bold mb-2">
+                              Quick Links
+                         </p>
+
+                         <ul class="space-y-1 text-white/60">
+
+                              <li>
+                                   <a href="../index.html" class="hover:text-warning">
+                                        Home
+                                   </a>
+                              </li>
+
+                              <li>
+                                   <a href="index.html" class="hover:text-warning">
+                                        Events
+                                   </a>
+                              </li>
+
+                              <li>
+                                   <a href="../club/index.html" class="hover:text-warning">
+                                        Clubs
+                                   </a>
+                              </li>
+
+                              <li>
+                                   <a href="../Announcement/index.html" class="hover:text-warning">
+                                        Announcements
+                                   </a>
+                              </li>
+
+                              <li>
+                                   <a href="../About/index.html" class="hover:text-warning">
+                                        About
+                                   </a>
+                              </li>
+
+                         </ul>
+
+                    </div>
+
+
+
+                    <!-- CONTACT -->
+
+                    <div>
+
+                         <p class="font-display text-lg font-bold mb-2">
+                              Contact
+                         </p>
+
+                         <p class="text-white/60 mb-1">
+                              Email: Honvinea@gmail.com
+                         </p>
+
+                         <p class="text-white/60 mb-1">
+                              Phone: (+885) 964749734
+                         </p>
+
+                         <p class="text-white/60">
+                              Open: Monday to Friday, 8:00 AM to 5:00 PM
+                         </p>
+
+
+                         <div class="flex gap-4 mt-4">
+
+
+                              <!-- GitHub -->
+
+                              <a href="https://github.com/CampusEventWebsite"
+                                   class="text-slate-400 hover:text-white transition">
+
+                                   <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+
+                                        <path
+                                             d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2.1c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.6-1.3-1.6-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 .1.6 2 3.3 1.4.1-.7.4-1.2.7-1.5-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.7 1 .7 2v3c0 .3.2.7.8.6A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z" />
+
+                                   </svg>
+
+                              </a>
+
+
+                              <!-- Facebook -->
+
+                              <a href="#" class="text-slate-400 hover:text-blue-500 transition">
+
+                                   <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+
+                                        <path
+                                             d="M24 12a12 12 0 1 0-13.9 11.9v-8.4H7.1V12h3V9.4c0-3 1.8-4.7 4.6-4.7 1.3 0 2.6.2 2.6.2v2.9h-1.5c-1.5 0-2 .9-2 1.9V12h3.3l-.5 3.5h-2.8v8.4A12 12 0 0 0 24 12z" />
+
+                                   </svg>
+
+                              </a>
+
+
+                              <!-- Instagram -->
+
+                              <a href="#" class="text-slate-400 hover:text-pink-500 transition">
+
+                                   <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"
+                                        viewBox="0 0 24 24">
+
+                                        <rect x="3" y="3" width="18" height="18" rx="5" />
+
+                                        <circle cx="12" cy="12" r="4" />
+
+                                        <circle cx="17.5" cy="6.5" r="1" />
+
+                                   </svg>
+
+                              </a>
+
+                         </div>
+
+                    </div>
+
+               </div>
+
+
+               <p class="mt-8 pt-4
+                border-t border-white/20
+                text-center text-white/50 text-sm">
+
+                    © 2026 CampusHub. All rights reserved.
+
+               </p>
+
+          </div>
+
+     </footer>
+
+
+     <script src="../js/mobile-nav.js" defer></script>
+</body>
+
+</html>
