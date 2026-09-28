@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>CampusHub - Registrations</title>
+
+     <script src="https://cdn.tailwindcss.com"></script>
+     <link rel="stylesheet" href="css/campushub.css">
+
+</head>
+
+<body class="min-h-screen bg-slate-50 font-sans text-slate-900">
+
+     <main class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+
+          <!-- Header -->
+          <div class="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+               <div>
+                    <p class="text-sm font-semibold text-blue-600">CampusHub</p>
+
+                    <h1 class="text-3xl font-bold">
+                         Registration Information
+                    </h1>
+
+                    <p class="mt-1 text-slate-500">
+                         Registrations saved in this browser.
+                    </p>
+               </div>
+
+               <div class="flex flex-wrap gap-3">
+                    <button type="button" onclick="exportRegistrations()"
+                         class="rounded-lg bg-blue-600 px-4 py-2 font-semibold text-white transition hover:bg-blue-700">
+                         Export CSV
+                    </button>
+
+                    <button type="button" onclick="clearRegistrations()"
+                         class="rounded-lg border border-red-300 px-4 py-2 font-semibold text-red-600 transition hover:bg-red-50">
+                         Clear All
+                    </button>
+               </div>
+          </div>
+
+          <!-- Statistics -->
+          <div class="mb-6 grid grid-cols-1 gap-4 sm:grid-cols-3">
+
+               <div class="rounded-xl bg-white p-5 shadow-sm ring-1 ring-slate-200">
+                    <p class="text-sm text-slate-500">Total Registrations</p>
+                    <p id="total" class="mt-1 text-3xl font-bold">0</p>
+               </div>
+
+               <div class="rounded-xl bg-white p-5 shadow-sm ring-1 ring-slate-200">
+                    <p class="text-sm text-slate-500">Latest Registration</p>
+                    <p id="latest" class="mt-1 text-lg font-bold">-</p>
+               </div>
+
+               <div class="rounded-xl bg-white p-5 shadow-sm ring-1 ring-slate-200">
+                    <p class="text-sm text-slate-500">Storage</p>
+                    <p class="mt-1 text-lg font-bold">Browser</p>
+               </div>
+
+          </div>
+
+          <!-- Registration Table -->
+          <div class="overflow-hidden rounded-xl bg-white shadow-sm ring-1 ring-slate-200">
+
+               <div class="overflow-x-auto">
+
+                    <table class="min-w-full text-left text-sm">
+
+                         <thead class="bg-slate-100 text-slate-700">
+                              <tr>
+                                   <th class="px-4 py-3 font-semibold">Registration No.</th>
+                                   <th class="px-4 py-3 font-semibold">Name</th>
+                                   <th class="px-4 py-3 font-semibold">Email</th>
+                                   <th class="px-4 py-3 font-semibold">Phone</th>
+                                   <th class="px-4 py-3 font-semibold">Event / Club</th>
+                                   <th class="px-4 py-3 font-semibold">Date</th>
+                              </tr>
+                         </thead>
+
+                         <tbody id="registrationTable"></tbody>
+
+                    </table>
+
+               </div>
+
+               <p id="empty" class="hidden px-6 py-12 text-center text-slate-500">
+                    No registrations yet.
+               </p>
+
+          </div>
+
+     </main>
+
+     <script>
+          const STORAGE_KEY = "campusHubRegistrations";
+
+          /*
+           * Safely read registrations from localStorage.
+           */
+          function getRegistrations() {
+               try {
+                    const data = localStorage.getItem(STORAGE_KEY);
+
+                    if (!data) {
+                         return [];
+                    }
+
+                    const registrations = JSON.parse(data);
+
+                    return Array.isArray(registrations) ? registrations : [];
+
+               } catch (error) {
+                    console.error("Unable to read registrations:", error);
+                    return [];
+               }
+          }
+
+          /*
+           * Escape user-provided text before inserting into HTML.
+           */
+          function escapeHTML(value) {
+               return String(value ?? "").replace(/[&<>'"]/g, character => ({
+                    "&": "&amp;",
+                    "<": "&lt;",
+                    ">": "&gt;",
+                    "'": "&#039;",
+                    '"': "&quot;"
+               })[character]);
+          }
+
+          /*
+           * Safely format registration date.
+           */
+          function formatDate(value) {
+               if (!value) {
+                    return "-";
+               }
+
+               const date = new Date(value);
+
+               if (Number.isNaN(date.getTime())) {
+                    return "-";
+               }
+
+               return date.toLocaleString();
+          }
+
+          /*
+           * Render registrations.
+           */
+          function renderRegistrations() {
+               const registrations = getRegistrations();
+
+               const table = document.getElementById("registrationTable");
+               const empty = document.getElementById("empty");
+               const total = document.getElementById("total");
+               const latest = document.getElementById("latest");
+
+               total.textContent = registrations.length;
+
+               latest.textContent = registrations.length
+                    ? registrations[registrations.length - 1].registrationNumber || "-"
+                    : "-";
+
+               table.innerHTML = "";
+
+               empty.classList.toggle(
+                    "hidden",
+                    registrations.length !== 0
+               );
+
+               registrations.forEach(registration => {
+
+                    const row = document.createElement("tr");
+
+                    row.className =
+                         "border-t border-slate-200 hover:bg-slate-50";
+
+                    row.innerHTML = `
+          <td class="px-4 py-3 font-semibold text-blue-600">
+            ${escapeHTML(registration.registrationNumber)}
+          </td>
+
+          <td class="px-4 py-3">
+            ${escapeHTML(registration.name || "-")}
+          </td>
+
+          <td class="px-4 py-3">
+            ${escapeHTML(registration.email)}
+          </td>
+
+          <td class="px-4 py-3">
+            ${escapeHTML(registration.phone || "-")}
+          </td>
+
+          <td class="px-4 py-3">
+            ${escapeHTML(registration.event)}
+          </td>
+
+          <td class="px-4 py-3">
+            ${escapeHTML(formatDate(registration.registeredAt))}
+          </td>
+        `;
+
+                    table.appendChild(row);
+               });
+          }
+
+          /*
+           * Delete all registrations.
+           */
+          function clearRegistrations() {
+               const registrations = getRegistrations();
+
+               if (registrations.length === 0) {
+                    alert("There are no registrations to delete.");
+                    return;
+               }
+
+               const confirmed = confirm(
+                    "Delete all saved registrations from this browser?"
+               );
+
+               if (!confirmed) {
+                    return;
+               }
+
+               try {
+                    localStorage.removeItem(STORAGE_KEY);
+                    renderRegistrations();
+               } catch (error) {
+                    console.error("Unable to clear registrations:", error);
+                    alert("Unable to clear registrations.");
+               }
+          }
+
+          /*
+           * Escape a CSV value.
+           */
+          function csvValue(value) {
+               return `"${String(value ?? "").replace(/"/g, '""')}"`;
+          }
+
+          /*
+           * Export registrations as CSV.
+           */
+          function exportRegistrations() {
+               const registrations = getRegistrations();
+
+               if (registrations.length === 0) {
+                    alert("There are no registrations to export.");
+                    return;
+               }
+
+               const headers = [
+                    "Registration Number",
+                    "Name",
+                    "Email",
+                    "Phone",
+                    "Event / Club",
+                    "Registered At"
+               ];
+
+               const rows = registrations.map(registration => [
+                    registration.registrationNumber,
+                    registration.name,
+                    registration.email,
+                    registration.phone,
+                    registration.event,
+                    registration.registeredAt
+               ]);
+
+               const csv = [
+                    headers,
+                    ...rows
+               ]
+                    .map(row => row.map(csvValue).join(","))
+                    .join("\r\n");
+
+               /*
+                * BOM helps Excel correctly recognize UTF-8.
+                */
+               const blob = new Blob(
+                    ["\uFEFF" + csv],
+                    {
+                         type: "text/csv;charset=utf-8;"
+                    }
+               );
+
+               const url = URL.createObjectURL(blob);
+
+               const link = document.createElement("a");
+
+               link.href = url;
+               link.download = "campushub-registrations.csv";
+
+               document.body.appendChild(link);
+               link.click();
+               link.remove();
+
+               /*
+                * Give the browser time to start the download.
+                */
+               setTimeout(() => {
+                    URL.revokeObjectURL(url);
+               }, 1000);
+          }
+
+          /*
+           * Automatically refresh if another tab changes localStorage.
+           */
+          window.addEventListener("storage", event => {
+               if (event.key === STORAGE_KEY) {
+                    renderRegistrations();
+               }
+          });
+
+          /*
+           * Initial render.
+           */
+          renderRegistrations();
+     </script>
+
+     <script src="js/mobile-nav.js" defer></script>
+</body>
+
+</html>
