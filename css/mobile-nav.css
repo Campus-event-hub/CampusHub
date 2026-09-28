@@ -1,0 +1,73 @@
+.campushub-mobile-header > div:first-child {
+     flex-direction: row !important;
+     align-items: center !important;
+     justify-content: space-between !important;
+     gap: 1rem !important;
+}
+
+.campushub-mobile-toggle {
+     display: inline-flex;
+     width: 2.75rem;
+     height: 2.75rem;
+     flex: 0 0 auto;
+     align-items: center;
+     justify-content: center;
+     border: 0;
+     border-radius: 0.375rem;
+     background: transparent;
+     color: #fff;
+     cursor: pointer;
+}
+
+.campushub-mobile-toggle:hover {
+     background: rgb(255 255 255 / 10%);
+}
+
+.campushub-mobile-toggle:focus-visible {
+     outline: 2px solid #f59e0b;
+     outline-offset: 2px;
+}
+
+.campushub-mobile-toggle svg {
+     width: 1.5rem;
+     height: 1.5rem;
+}
+
+@media (max-width: 767px) {
+     .campushub-mobile-header nav {
+          position: absolute;
+          top: 100%;
+          left: 0;
+          display: none;
+          width: 100%;
+          padding: 0 1rem 1rem;
+          background: #0f172a;
+          box-shadow: 0 8px 12px rgb(0 0 0 / 18%);
+     }
+
+     .campushub-mobile-header nav[data-mobile-open="true"] {
+          display: block;
+     }
+
+     .campushub-mobile-header nav ul {
+          display: flex !important;
+          flex-direction: column !important;
+          align-items: stretch !important;
+          gap: 0.25rem !important;
+     }
+
+     .campushub-mobile-header nav a {
+          display: block;
+          padding: 0.625rem 0.75rem;
+     }
+
+     .campushub-mobile-header + main {
+          padding-top: 5rem !important;
+     }
+}
+
+@media (min-width: 768px) {
+     .campushub-mobile-toggle {
+          display: none;
+     }
+}
