@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>CampusHub: Music Club</title>
+     <script src="https://cdn.tailwindcss.com"></script>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;700&family=Sora:wght@400;600;700&display=swap"
+          rel="stylesheet">
+     <script>
+          tailwind.config = {
+               theme: { extend: { colors: { main: '#2563EB', mainHover: '#1D4ED8', mainLight: '#DBEAFE', background: '#F8FAFC', mainText: '#172033', secondText: '#475569', menuBar: '#0F172A', warning: '#F59E0B', succes: '#16A34A' }, fontFamily: { display: 'serif', sans: ['Sora', 'sans-serif'] } } }
+          }
+     </script>
+     <link rel="stylesheet" href="../css/campushub.css">
+
+</head>
+
+<body class="min-h-screen flex flex-col bg-background font-sans text-mainText">
+     <header class="bg-menuBar text-white shadow-md fixed top-0 left-0 w-full z-50">
+          <div
+               class="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-4 sm:px-6 md:flex-row md:items-center md:justify-between lg:px-16">
+               <a href="../index.html" class="flex items-center gap-2 transition-opacity hover:opacity-90"><img
+                         src="../image/R1.png" alt="CampusHub Logo" class="h-12 w-12 rounded-lg object-cover">
+                    <div>
+                         <h1 class="text-base font-bold leading-tight"><span class="text-succes">Campus</span><span
+                                   class="text-main">Hub</span></h1>
+                         <p class="text-[8px] font-semibold tracking-wide text-slate-400">STUDENT HUB & COMMUNITY</p>
+                    </div>
+               </a>
+               <nav aria-label="Main navigation">
+                    <ul
+                         class="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm font-medium sm:gap-x-6 md:gap-x-7 lg:gap-x-8">
+                         <li><a href="../index.html" class="text-white hover:text-warning text-[16px]">Home</a></li>
+                         <li><a href="../About/index.html" class="text-slate-200 hover:text-warning text-[16px]">About</a>
+                         </li>
+                         <li><a href="index.html"
+                                   class="text-slate-200 hover:text-warning text-[16px] border-b-2 border-warning pb-1">Clubs</a>
+                         </li>
+                         <li><a href="../Event/index.html"
+                                   class="text-slate-200 hover:text-warning text-[16px]">Events</a></li>
+                         <li><a href="../Announcement/index.html"
+                                   class="text-slate-200 hover:text-warning text-[16px]">Announcements</a>
+                         </li>
+                    </ul>
+               </nav>
+          </div>
+     </header>
+
+     <main class="flex-1 pt-20">
+          <section class="relative flex min-h-[520px] items-center bg-cover bg-center px-8 py-16 md:min-h-[560px] md:px-16 xl:min-h-[450px]"
+               style="background-image: linear-gradient(90deg, rgba(15, 23, 42, .84), rgba(15, 23, 42, .38)), url('../image/R3.png');">
+               <div class="max-w-3xl text-white">
+                    <p class="mb-3 text-sm font-bold uppercase tracking-[.2em] text-warning">Performing arts</p>
+                    <h1 class="mb-4 font-display text-[38px] font-bold leading-tight sm:text-[42px] md:text-[48px]"><span
+                              class="border-b-4 border-warning">Music</span> Club</h1>
+                    <p class="max-w-2xl text-base text-white/80">Play, learn, and perform with fellow students in a welcoming campus music community.</p>
+               </div>
+          </section>
+          <section class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-16">
+               <div class="mb-8">
+                    <h2 class="font-display text-3xl font-bold">About the Music Club</h2>
+                    <p class="mt-2 max-w-3xl text-secondText">Share your love of music, learn from other students, and collaborate on performances for the campus community.</p>
+               </div>
+               <div class="mb-8 grid grid-cols-1 gap-6 md:grid-cols-2">
+                    <article class="rounded-xl border border-slate-200 bg-white p-6">
+                         <h3 class="text-xl font-bold">Activities</h3>
+                         <p class="mt-2 leading-6 text-secondText">Join rehearsals, share skills with other members, and work together on campus performances.</p>
+                    </article>
+                    <article class="rounded-xl border border-slate-200 bg-white p-6">
+                         <h3 class="text-xl font-bold">Who can join</h3>
+                         <p class="mt-2 leading-6 text-secondText">All students interested in music are welcome, whether they are beginners or experienced performers.</p>
+                    </article>
+               </div>
+               <div class="mb-10 flex flex-wrap gap-3">
+                    <a href="#registerDialog" onclick="openRegister('Music Club')"
+                         class="rounded-lg bg-main px-5 py-3 font-semibold text-white hover:bg-mainHover">Register for Music Club</a>
+                    <a href="index.html"
+                         class="rounded-lg border border-main px-5 py-3 font-semibold text-main hover:bg-blue-50">Back to Clubs</a>
+               </div>
+               <div class="hidden">
+                    <article class="flex flex-col rounded-xl bg-white p-6 shadow-sm">
+                         <p class="text-sm font-bold text-main">Public speaking</p>
+                         <h3 class="mt-1 text-2xl font-bold">Debate Club</h3>
+                         <p class="mt-3 flex-1 text-base leading-6 text-secondText">Practice argument, research, and
+                              confident public
+                              speaking through friendly debates.</p>
+                         <div class="mt-auto flex gap-2 pt-6"><a href="Debate.html"
+                                   class="w-1/2 rounded-lg bg-main px-3 py-3 text-center font-semibold text-white hover:bg-mainHover">View</a><a
+                                   href="#registerDialog" onclick="openRegister('Debate Club')"
+                                   class="w-1/2 rounded-lg border border-succes/30 px-3 py-3 text-center font-semibold text-succes hover:bg-succes hover:text-white">Register</a>
+                         </div>
+                    </article>
+                    <article class="flex flex-col rounded-xl bg-white p-6 shadow-sm">
+                         <p class="text-sm font-bold text-main">Creative arts</p>
+                         <h3 class="mt-1 text-2xl font-bold">Photography Club</h3>
+                         <p class="mt-3 flex-1 text-base leading-6 text-secondText">Learn to capture campus stories,
+                              improve your
+                              technique, and share your best work.</p>
+                         <div class="mt-auto flex gap-2 pt-6"><a href="photography.html"
+                                   class="w-1/2 rounded-lg bg-main px-3 py-3 text-center font-semibold text-white hover:bg-mainHover">View</a><a
+                                   href="#registerDialog" onclick="openRegister('Photography Club')"
+                                   class="w-1/2 rounded-lg border border-succes/30 px-3 py-3 text-center font-semibold text-succes hover:bg-succes hover:text-white">Register</a>
+                         </div>
+                    </article>
+                    <article class="flex flex-col rounded-xl bg-white p-6 shadow-sm">
+                         <p class="text-sm font-bold text-main">Innovation</p>
+                         <h3 class="mt-1 text-2xl font-bold">Robotics Club</h3>
+                         <p class="mt-3 flex-1 text-base leading-6 text-secondText">Design, build, and program robots
+                              while working with
+                              a practical engineering team.</p>
+                         <div class="mt-auto flex gap-2 pt-6"><a href="Roboticclub.html"
+                                   class="w-1/2 rounded-lg bg-main px-3 py-3 text-center font-semibold text-white hover:bg-mainHover">View</a><a
+                                   href="#registerDialog" onclick="openRegister('Robotics Club')"
+                                   class="w-1/2 rounded-lg border border-succes/30 px-3 py-3 text-center font-semibold text-succes hover:bg-succes hover:text-white">Register</a>
+                         </div>
+                    </article>
+                    <article class="flex flex-col rounded-xl bg-white p-6 shadow-sm">
+                         <p class="text-sm font-bold text-main">Community service</p>
+                         <h3 class="mt-1 text-2xl font-bold">Volunteer Club</h3>
+                         <p class="mt-3 flex-1 text-base leading-6 text-secondText">Turn student energy into local impact
+                              through service
+                              projects and fundraising.</p>
+                         <div class="mt-auto flex gap-2 pt-6"><a href="volunnteerclub.html"
+                                   class="w-1/2 rounded-lg bg-main px-3 py-3 text-center font-semibold text-white hover:bg-mainHover">View</a><a
+                                   href="#registerDialog" onclick="openRegister('Volunteer Club')"
+                                   class="w-1/2 rounded-lg border border-succes/30 px-3 py-3 text-center font-semibold text-succes hover:bg-succes hover:text-white">Register</a>
+                         </div>
+                    </article>
+                    <article class="flex flex-col rounded-xl bg-white p-6 shadow-sm">
+                         <p class="text-sm font-bold text-main">Performing arts</p>
+                         <h3 class="mt-1 text-2xl font-bold">Music Club</h3>
+                         <p class="mt-3 flex-1 text-base leading-6 text-secondText">Share your love of music, learn from
+                              other students,
+                              and perform together on campus.</p>
+                         <div class="mt-auto flex gap-2 pt-6"><a href="musicclub.html"
+                                   class="w-1/2 rounded-lg bg-main px-3 py-3 text-center font-semibold text-white hover:bg-mainHover">View</a><a
+                                   href="#registerDialog" onclick="openRegister('Music Club')"
+                                   class="w-1/2 rounded-lg border border-succes/30 px-3 py-3 text-center font-semibold text-succes hover:bg-succes hover:text-white">Register</a>
+                         </div>
+                    </article>
+                    <article class="flex flex-col rounded-xl bg-white p-6 shadow-sm">
+                         <p class="text-sm font-bold text-main">Fitness and wellbeing</p>
+                         <h3 class="mt-1 text-2xl font-bold">Aerobic Club</h3>
+                         <p class="mt-3 flex-1 text-base leading-6 text-secondText">Join group aerobic workouts to build stamina, coordination, and overall fitness.</p>
+                         <div class="mt-auto flex gap-2 pt-6"><a href="Arebicclub.html"
+                                   class="w-1/2 rounded-lg bg-main px-3 py-3 text-center font-semibold text-white hover:bg-mainHover">View</a><a
+                                   href="#registerDialog" onclick="openRegister('Aerobic Club')"
+                                   class="w-1/2 rounded-lg border border-succes/30 px-3 py-3 text-center font-semibold text-succes hover:bg-succes hover:text-white">Register</a>
+                         </div>
+                    </article>
+               </div>
+          </section>
+          <!-- Registration Dialog -->
+          <div id="registerDialog" class="hidden fixed inset-0 z-50 overflow-y-auto">
+
+               <!-- Background -->
+               <div class="fixed inset-0 bg-black/50" onclick="closeRegister()">
+               </div>
+
+               <!-- Dialog -->
+               <div class="flex min-h-full items-center justify-center p-4">
+
+                    <div class="relative w-full max-w-md rounded-xl bg-white p-4 shadow-xl">
+
+                         <!-- Header -->
+                         <div class="mb-4">
+                              <h2 class="text-xl font-bold text-slate-900">
+                                   Club Registration
+                              </h2>
+
+                              <p id="selectedEvent" class="mt-1 text-blue-600 font-medium">
+                              </p>
+                         </div>
+
+                         <!-- Registration Form -->
+                         <form onsubmit="submitRegistration(event)" class="space-y-4">
+
+                              <!-- Full Name -->
+                              <div>
+                                   <label class="mb-1 block text-sm font-semibold">
+                                        Full Name
+                                   </label>
+
+                                   <input id="studentName" type="text" required placeholder="Enter your full name"
+                                        class="w-full rounded-lg border border-slate-300
+                          px-3 py-2 focus:outline-none
+                   focus:ring-2 focus:ring-blue-500">
+                              </div>
+
+                              <!-- Email -->
+                              <div>
+                                   <label class="mb-1 block text-sm font-semibold">
+                                        Email
+                                   </label>
+
+                                   <input id="studentEmail" type="email" required placeholder="Enter your email" class="w-full rounded-lg border border-slate-300
+                          px-3 py-2 focus:outline-none
+                   focus:ring-2 focus:ring-blue-500">
+                              </div>
+
+                              <!-- Phone -->
+                              <div>
+                                   <label class="mb-1 block text-sm font-semibold">
+                                        Phone Number
+                                   </label>
+
+                                   <input id="studentPhone" type="tel" required placeholder="Enter your phone number"
+                                        class="w-full rounded-lg border border-slate-300
+                          px-3 py-2 focus:outline-none
+                   focus:ring-2 focus:ring-blue-500">
+                              </div>
+
+                              <!-- Club -->
+                              <div>
+                                   <label class="mb-1 block text-sm font-semibold">
+                                        Club
+                                   </label>
+
+                                   <select id="eventName" required class="w-full rounded-lg border border-slate-300
+                          px-3 py-2 focus:outline-none
+                   focus:ring-2 focus:ring-blue-500">
+
+                                        <option value="">
+                                             Choose a club
+                                        </option>
+
+                                        <option value="Debate Club">Debate Club</option>
+                                        <option value="Photography Club">Photography Club</option>
+                                        <option value="Robotics Club">Robotics Club</option>
+                                        <option value="Volunteer Club">Volunteer Club</option>
+                                        <option value="Music Club">Music Club</option>
+                                        <option value="Aerobic Club">Aerobic Club</option>
+
+                                   </select>
+                              </div>
+
+                              <!-- Buttons -->
+                              <div class="flex gap-3 pt-1">
+
+                                   <button type="button" onclick="closeRegister()" class="flex-1 rounded-lg border border-slate-300
+                   px-3 py-2 font-semibold text-slate-700
+                   hover:bg-slate-100">
+                                        Cancel
+                                   </button>
+
+                                   <button type="submit" class="flex-1 rounded-lg bg-blue-600
+                   px-3 py-2 font-semibold text-white
+                   hover:bg-blue-700">
+                                        Register
+                                   </button>
+                              </div>
+                         </form>
+                    </div>
+               </div>
+          </div>
+     </main>
+     <footer class="mt-auto bg-[#14241f]/95 text-white">
+          <div class="mx-auto max-w-6xl px-4 py-16">
+               <div class="grid gap-8 text-sm md:grid-cols-3">
+                    <div>
+                         <p class="mb-2 font-display text-lg font-bold">CampusHub</p>
+                         <p class="text-white/60">Find campus events, join clubs, and read important announcements.</p>
+                         <p class="text-white/60">Greenfield Campus</p>
+                    </div>
+                    <div>
+                         <p class="mb-2 font-display text-lg font-bold">Quick Links</p>
+                         <ul class="space-y-1 text-white/60">
+                              <li><a href="../index.html" class="hover:text-sun">Home</a></li>
+                              <li><a href="../Event/index.html" class="hover:text-sun">Events</a></li>
+                              <li><a href="index.html" class="hover:text-sun">Clubs</a></li>
+                              <li><a href="../Announcement/index.html" class="hover:text-sun">Announcements</a></li>
+                              <li><a href="../About/index.html" class="hover:text-sun">About</a></li>
+                         </ul>
+                    </div>
+                    <div>
+                         <p class="mb-2 font-display text-lg font-bold">Contact</p>
+                         <p class="mb-1 text-white/60">Email: Honvinea@gmail.com</p>
+                         <p class="mb-1 text-white/60">Phone: (+885) 964749734</p>
+                         <p class="text-white/60">Open: Monday to Friday, 8:00 AM to 5:00 PM</p>
+                         <div class="mt-4 flex gap-4">
+                              <a href="https://github.com/CampusEventWebsite" class="text-slate-400 transition hover:text-white" aria-label="GitHub">
+                                   <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2.1c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.6-1.3-1.6-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 .1.6 2 3.3 1.4.1-.7.4-1.2.7-1.5-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.7 1 .7 2v3c0 .3.2.7.8.6A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z" />
+                                   </svg>
+                              </a>
+                              <a href="#" class="text-slate-400 transition hover:text-blue-500" aria-label="Facebook">
+                                   <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M24 12a12 12 0 1 0-13.9 11.9v-8.4H7.1V12h3V9.4c0-3 1.8-4.7 4.6-4.7 1.3 0 2.6.2 2.6.2v2.9h-1.5c-1.5 0-2 .9-2 1.9V12h3.3l-.5 3.5h-2.8v8.4A12 12 0 0 0 24 12z" />
+                                   </svg>
+                              </a>
+                              <a href="#" class="text-slate-400 transition hover:text-pink-500" aria-label="Instagram">
+                                   <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                        <rect x="3" y="3" width="18" height="18" rx="5" />
+                                        <circle cx="12" cy="12" r="4" />
+                                        <circle cx="17.5" cy="6.5" r="1" />
+                                   </svg>
+                              </a>
+                         </div>
+                    </div>
+               </div>
+               <p class="mt-8 border-t border-white/20 pt-4 text-center text-sm text-white/50">© 2026 CampusHub. All
+                    rights
+                    reserved.</p>
+          </div>
+          <script src="../js/register.js"></script>
+     </footer>
+     <script src="../js/mobile-nav.js" defer></script>
+</body>
+
+</html>
