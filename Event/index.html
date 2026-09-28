@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <script src="https://cdn.tailwindcss.com"></script>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;700&family=Sora:wght@400;600;700&display=swap"
+          rel="stylesheet">
+     <title>Event</title>
+     <script>
+          tailwind.config = {
+               theme: {
+                    extend: {
+                         colors: {
+                              main: "#2563EB",
+                              mainHover: "#1D4ED8",
+                              mainLight: "#DBEAFE",
+                              second: "#8B5CF6",
+                              secondLight: "#E9D5FF",
+                              background: "#F8FAFC",
+                              mainText: "#172033",
+                              secondText: "#475569",
+                              footer: "#14241f",
+                              menuBar: "#0F172A",
+                              error: "#DC2626",
+                              warning: "#F59E0B",
+                              succes: "#16A34A"
+
+                         },
+                         fontFamily: {
+                              display: "serif",
+                              sans: ["Sora", "sans-serif"]
+                         }
+                    }
+               }
+          }
+     </script>
+
+     <link rel="stylesheet" href="../css/campushub.css">
+
+</head>
+
+<body class="font-sans">
+     <header class="bg-menuBar text-white shadow-md fixed top-0 left-0 w-full z-50">
+
+          <div class="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-4
+                    sm:px-6
+                    md:flex-row md:items-center md:justify-between
+                    lg:px-16">
+
+               <a href="../index.html" class="flex items-center gap-2 transition-opacity hover:opacity-90">
+
+                    <img src="../image/R1.png" alt="CampusHub Logo" class="h-12 w-12 rounded-lg object-cover">
+
+                    <div>
+                         <h1 class="text-base font-bold leading-tight">
+                              <span class="text-succes">Campus</span><span class="text-main">Hub</span>
+                         </h1>
+
+                         <p class="text-[8px] font-semibold tracking-wide text-slate-400">
+                              STUDENT HUB & COMMUNITY
+                         </p>
+                    </div>
+
+               </a>
+
+               <nav aria-label="Main navigation">
+
+                    <ul class="flex flex-wrap items-center justify-center
+                           gap-x-5 gap-y-2
+                           text-sm font-medium
+                           sm:gap-x-6
+                           md:gap-x-7
+                           lg:gap-x-8">
+
+                         <li>
+                              <a href="../index.html" class="pb-1 text-white hover:text-warning text-[16px]">
+                                   Home
+                              </a>
+                         </li>
+
+                         <li>
+                              <a href="../About/index.html" class="text-slate-200 transition hover:text-warning text-[16px]">
+                                   About
+                              </a>
+                         </li>
+
+                         <li>
+                              <a href="../club/index.html"
+                                   class="text-slate-200 transition hover:text-warning text-[16px]">
+                                   Clubs
+                              </a>
+                         </li>
+
+                         <li>
+                              <a href="index.html"
+                                   class="text-slate-200 transition hover:text-warning text-[16px] border-b-2 border-warning pb-1">
+                                   Events
+                              </a>
+                         </li>
+
+                         <li>
+                              <a href="../Announcement/index.html" class="text-slate-200 transition text-[16px]">
+                                   Announcements
+                              </a>
+                         </li>
+
+                    </ul>
+
+               </nav>
+          </div>
+     </header>
+
+     <main>
+          <section class="flex min-h-[520px] items-center bg-cover bg-center px-8 py-12 md:min-h-[560px] md:px-16 xl:min-h-[450px]"
+               style="background-image: linear-gradient(90deg, rgba(15, 23, 42, 0.72), rgba(15, 23, 42, 0.32), rgba(15, 23, 42, 0.05)), url('../image/R2.png');">
+               <div class="grid grid-cols-2 py-16">
+                    <div class="text-background">
+                         <h3 class="text-[16px] font-bold text-warning pt-20">Campus calendar</h3>
+                         <h1 class="text-[38px] font-bold text-background pb-4 sm:text-[42px] md:text-[48px]"><span
+                                   class="boder border-b-[4px] border-warning">Eve</span>nts</h1>
+                         <p class="text-[16px] text-background pt-2">Browse upcoming campus events. Each carh shows the
+                              category,
+                              date, place, and organizer.</p>
+                    </div>
+               </div>
+          </section>
+          <section class="grid grid-cols-1 gap-6 bg-background px-8 py-12 md:grid-cols-2 md:px-16 lg:grid-cols-3">
+               <div class="md:col-span-2 lg:col-span-3">
+                    <h2 class="text-[32px] font-bold text-mainText pb-4">Upcoming Events</h2>
+               </div>
+               <div class="bg-white flex flex-col rounded-xl p-6 shadow-sm">
+                    <h5 class="text-[16px] font-bold text-main">Student Life</h5>
+                    <h3 class="text-[24px] font-bold">Orientation Week</h3>
+                    <div class="text-secondText">
+                         <p class="pb-[12px]">October 12–16, 2026</p>
+                         <p>PNC</p>
+                         <p>Organizer: PNC Student Affairs</p>
+                         <p class="pb-[24px]">Welcome new students and discover campus life, clubs, and activities.</p>
+                    </div>
+                    <div class="mt-4 flex gap-2">
+                         <a href="./Orientation-Week.html"
+                              class="block w-[50%] rounded-[12px] bg-main px-3 py-2 text-center font-700 text-background transition hover:bg-mainHover">
+                              View
+                         </a>
+                         <button type="button" onclick="openRegister('Orientation Week')"
+                              class="block w-[50%] px-5 py-2 border border-succes/30 hover:bg-succes hover:text-white text-succes rounded-lg font-semibold">
+                              Register
+                         </button>
+                    </div>
+               </div>
+               <div class="bg-white flex flex-col rounded-xl p-6 shadow-sm">
+                    <h5 class="text-[16px] font-bold text-main">Academic</h5>
+                    <h3 class="text-[24px] font-bold">Career Fair</h3>
+                    <div class="text-secondText">
+                         <p class="pb-[12px]">Nov 8, 2026</p>
+                         <p>Expo Hall</p>
+                         <p>Organizer: Career Center</p>
+                         <p>Meet companies and learn about internships.</p>
+                    </div>
+                    <div class="mt-auto flex gap-2 pt-4">
+                         <a href="./carriefair.html"
+                              class="block w-[50%] rounded-[8px] bg-main px-3 py-2 text-center font-700 text-background transition hover:bg-mainHover">
+                              View
+                         </a>
+                         <button type="button" onclick="openRegister('Career Fair')"
+                              class="block w-[50%] px-5 py-2 border border-succes/30 hover:bg-succes hover:text-white text-succes rounded-lg font-semibold">
+                              Register
+                         </button>
+                    </div>
+               </div>
+               <div class="bg-white flex flex-col rounded-[8PX] p-6 shadow-sm">
+                    <h5 class="text-[16px] font-bold text-main">Sports</h5>
+                    <h3 class="text-[24px] font-bold">Basketball Tournament</h3>
+                    <div class="text-secondText">
+                         <p class="pb-[12px]">October 5, 2026</p>
+                         <p>PNC School Football Field</p>
+                         <p>Organizer: PNC School Sports Department</p>
+                         <p>Enjoy a high-energy match and support the school spirit.</p>
+                    </div>
+                    <div class="mt-auto flex gap-2 pt-4">
+                         <a href="./Basketball.html"
+                              class="block w-[50%] rounded-[8PX] bg-main px-3 py-2 text-center font-700 text-background transition hover:bg-mainHover">
+                              View
+                         </a>
+                         <button type="button" onclick="openRegister('Basketball Tournament')"
+                              class="block w-[50%] px-5 py-2 border border-succes/30 hover:bg-succes hover:text-white text-succes rounded-lg font-semibold">
+                              Register
+                         </button>
+                    </div>
+               </div>
+               <div class="md:col-span-2 lg:col-span-3">
+                    <h2 class="text-[32px] font-bold text-mainText pb-4">Previous Events</h2>
+               </div>
+               <div class="bg-white flex flex-col rounded-xl p-6 shadow-sm">
+                    <h5 class="text-[16px] font-bold text-main">Social</h5>
+                    <h3 class="text-[24px] font-bold">Welcome Party</h3>
+                    <div class="text-secondText">
+                         <p class="pb-[12px]">Jun 28, 2026</p>
+                         <p>MStudent Plaza</p>
+                         <p>Organizer: Student Council</p>
+                         <p>Music, food, and games to start the semester.</p>
+                    </div>
+                    <div class="mt-4 flex gap-2">
+                         <a href="./welcome-party.html"
+                              class="block w-[50%] rounded-[12px] bg-main px-3 py-2 text-center font-700 text-background transition hover:bg-mainHover">
+                              View
+                         </a>
+                         <button type="button" onclick="openRegister('Welcome Party')"
+                              class="block w-[50%] px-5 py-2 border border-succes/30 hover:bg-succes hover:text-white text-succes rounded-lg font-semibold">
+                              Register
+                         </button>
+                    </div>
+               </div>
+               <div class="bg-white flex flex-col rounded-xl p-6 shadow-sm">
+                    <h5 class="text-[16px] font-bold text-main">Workshop</h5>
+                    <h3 class="text-[24px] font-bold">Design Workshop</h3>
+                    <div class="text-secondText">
+                         <p class="pb-[12px]">May 12, 2026</p>
+                         <p>Lab 2</p>
+                         <p>Organizer: Design Department</p>
+                         <p>Learn basic UI design tips for beginners.</p>
+                    </div>
+                    <div class="mt-auto flex gap-2 pt-4">
+                         <a href="./designshop.html"
+                              class="block w-[50%] rounded-[8px] bg-main px-3 py-2 text-center font-700 text-background transition hover:bg-mainHover">
+                              View
+                         </a>
+                         <button type="button" onclick="openRegister('Design Workshop')"
+                              class="block w-[50%] px-5 py-2 border border-succes/30 hover:bg-succes hover:text-white text-succes rounded-lg font-semibold">
+                              Register
+                         </button>
+                    </div>
+               </div>
+               <div class="bg-white flex flex-col rounded-[8PX] p-6 shadow-sm">
+                    <h5 class="text-[16px] font-bold text-main">Clubs</h5>
+                    <h3 class="text-[24px] font-bold">Robotics Showcase</h3>
+                    <div class="text-secondText">
+                         <p class="pb-[12px]">May 18, 2026</p>
+                         <p>Engineering Building</p>
+                         <p>Organizer: Robotics Club</p>
+                         <p>See student robots and demo projects.</p>
+                    </div>
+                    <div class="mt-auto flex gap-2 pt-4">
+                         <a href="./robotics Showcase.html"
+                              class="block w-[50%] rounded-[8PX] bg-main px-3 py-2 text-center font-700 text-background transition hover:bg-mainHover">
+                              View
+                         </a>
+                         <button type="button" onclick="openRegister('Robotics Showcase')"
+                              class="block w-[50%] px-5 py-2 border border-succes/30 hover:bg-succes hover:text-white text-succes rounded-lg font-semibold">
+                              Register
+                         </button>
+                    </div>
+               </div>
+          </section>
+     </main>
+     <footer class="mt-auto bg-[#14241f]/95 text-white">
+          <div class="max-w-6xl mx-auto px-4 py-16">
+               <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-sm">
+
+                    <div>
+                         <p class="font-display text-lg font-bold mb-2">CampusHub</p>
+                         <p class="text-white/60 mb-2">Find campus events, join clubs, and read important announcements.
+                         </p>
+                         <p class="text-white/60">Greenfield Campus</p>
+                    </div>
+                    <!-- quick links -->
+                    <div>
+                         <p class="font-display text-lg font-bold mb-2">Quick Links</p>
+                         <ul class="space-y-1 text-white/60">
+                              <li><a href="../index.html" class="hover:text-sun">Home</a></li>
+                              <li><a href="index.html" class="hover:text-sun">Events</a></li>
+                              <li><a href="../club/index.html" class="hover:text-sun">Clubs</a></li>
+                              <li><a href="../Announcement/index.html" class="hover:text-sun">Announcements</a></li>
+                              <li><a href="../About/index.html" class="hover:text-sun">About</a></li>
+                         </ul>
+                    </div>
+                    <!-- contact -->
+                    <div>
+                         <p class="font-display text-lg font-bold mb-2">Contact</p>
+                         <p class="text-white/60 mb-1">Email: Honvinea@gmail.com</p>
+                         <p class="text-white/60 mb-1">Phone: (+885) 964749734</p>
+                         <p class="text-white/60">Open: Monday to Friday, 8:00 AM to 5:00 PM</p>
+                         <div class="flex gap-4">
+
+                              <a href="https://github.com/CampusEventWebsite"
+                                   class="text-slate-400 hover:text-white transition">
+                                   <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                        <path
+                                             d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2.1c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.6-1.3-1.6-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 .1.6 2 3.3 1.4.1-.7.4-1.2.7-1.5-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.7 1 .7 2v3c0 .3.2.7.8.6A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z" />
+                                   </svg>
+                              </a>
+
+                              <a href="#" class="text-slate-400 hover:text-blue-500 transition">
+                                   <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                        <path
+                                             d="M24 12a12 12 0 1 0-13.9 11.9v-8.4H7.1V12h3V9.4c0-3 1.8-4.7 4.6-4.7 1.3 0 2.6.2 2.6.2v2.9h-1.5c-1.5 0-2 .9-2 1.9V12h3.3l-.5 3.5h-2.8v8.4A12 12 0 0 0 24 12z" />
+                                   </svg>
+                              </a>
+                              <a href="#" class="text-slate-400 hover:text-pink-500 transition">
+                                   <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"
+                                        viewBox="0 0 24 24">
+                                        <rect x="3" y="3" width="18" height="18" rx="5" />
+                                        <circle cx="12" cy="12" r="4" />
+                                        <circle cx="17.5" cy="6.5" r="1" />
+                                   </svg>
+                              </a>
+                         </div>
+
+                    </div>
+               </div>
+               <p class="mt-8 pt-4 border-t border-white/20 text-center text-white/50 text-sm">
+                    © 2026 CampusHub. All rights reserved.
+               </p>
+          </div>
+     </footer>
+
+     <!-- Registration Dialog -->
+     <div id="registerDialog" class="hidden fixed inset-0 z-50 overflow-y-auto">
+
+          <!-- Background -->
+          <div class="fixed inset-0 bg-black/50" onclick="closeRegister()">
+          </div>
+
+          <!-- Dialog -->
+          <div class="flex min-h-full items-center justify-center p-4">
+
+               <div class="relative w-full max-w-md rounded-2xl bg-white p-5 shadow-xl">
+
+                    <!-- Header -->
+                    <div class="mb-4">
+                         <h2 class="text-2xl font-bold text-slate-900">
+                              Event Registration
+                         </h2>
+
+                         <p id="selectedEvent" class="mt-1 text-blue-600 font-medium">
+                         </p>
+                    </div>
+
+                    <!-- Registration Form -->
+                    <form onsubmit="submitRegistration(event)" class="space-y-4">
+
+                         <!-- Full Name -->
+                         <div>
+                              <label class="block text-sm font-semibold mb-1.5">
+                                   Full Name
+                              </label>
+
+                              <input id="studentName" type="text" required placeholder="Enter your full name" class="w-full rounded-lg border border-slate-300
+                   px-3 py-2.5 focus:outline-none
+                   focus:ring-2 focus:ring-blue-500">
+                         </div>
+
+                         <!-- Email -->
+                         <div>
+                              <label class="block text-sm font-semibold mb-1.5">
+                                   Email
+                              </label>
+
+                              <input id="studentEmail" type="email" required placeholder="Enter your email" class="w-full rounded-lg border border-slate-300
+                   px-3 py-2.5 focus:outline-none
+                   focus:ring-2 focus:ring-blue-500">
+                         </div>
+
+                         <!-- Phone -->
+                         <div>
+                              <label class="block text-sm font-semibold mb-1.5">
+                                   Phone Number
+                              </label>
+
+                              <input id="studentPhone" type="tel" required placeholder="Enter your phone number" class="w-full rounded-lg border border-slate-300
+                   px-3 py-2.5 focus:outline-none
+                   focus:ring-2 focus:ring-blue-500">
+                         </div>
+
+                         <!-- Event -->
+                         <div>
+                              <label class="block text-sm font-semibold mb-1.5">
+                                   Event
+                              </label>
+
+                              <select id="eventName" required class="w-full rounded-lg border border-slate-300
+                   px-3 py-2.5 focus:outline-none
+                   focus:ring-2 focus:ring-blue-500">
+
+                                   <option value="">
+                                        Choose an event
+                                   </option>
+
+                                   <option value="Orientation Week">Orientation Week</option>
+                                   <option value="Career Fair">Career Fair</option>
+                                   <option value="Basketball Tournament">Basketball Tournament</option>
+                                   <option value="Welcome Party">Welcome Party</option>
+                                   <option value="Design Workshop">Design Workshop</option>
+                                   <option value="Robotics Showcase">Robotics Showcase</option>
+
+                              </select>
+                         </div>
+
+                         <!-- Buttons -->
+                         <div class="flex gap-3 pt-1">
+
+                              <button type="button" onclick="closeRegister()" class="flex-1 rounded-lg border border-slate-300
+                   px-4 py-2.5 font-semibold text-slate-700
+                   hover:bg-slate-100">
+                                   Cancel
+                              </button>
+
+                              <button type="submit" class="flex-1 rounded-lg bg-blue-600
+                   px-4 py-2.5 font-semibold text-white
+                   hover:bg-blue-700">
+                                   Register
+                              </button>
+
+                         </div>
+
+                    </form>
+
+               </div>
+          </div>
+     </div>
+
+
+     <!-- JavaScript -->
+     <script src="/js/register.js"></script>
+
+
+     <script src="../js/mobile-nav.js" defer></script>
+</body>
