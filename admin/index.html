@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="robots" content="noindex">
+     <title>CampusHub: Admin Registrations</title>
+     <script src="https://cdn.tailwindcss.com"></script>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
+     <script>
+          tailwind.config = {
+               theme: {
+                    extend: {
+                         colors: {
+                              main: "#2563EB",
+                              mainHover: "#1D4ED8",
+                              mainLight: "#DBEAFE",
+                              background: "#F8FAFC",
+                              mainText: "#172033",
+                              secondText: "#475569",
+                              menuBar: "#0F172A",
+                              error: "#DC2626",
+                              warning: "#F59E0B",
+                              succes: "#16A34A"
+                         },
+                         fontFamily: {
+                              sans: ["Sora", "sans-serif"]
+                         }
+                    }
+               }
+          }
+     </script>
+     <link rel="stylesheet" href="../css/campushub.css">
+</head>
+
+<body class="min-h-screen bg-background font-sans text-mainText">
+
+     <div id="app" class="hidden">
+          <header class="bg-menuBar text-white shadow-md">
+               <div class="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
+                    <a href="../index.html" class="flex items-center gap-2">
+                         <img src="../image/R1.png" alt="CampusHub Logo" class="h-12 w-12 rounded-lg object-cover">
+                         <div>
+                              <p class="text-base font-bold leading-tight">
+                                   <span class="text-succes">Campus</span><span class="text-main">Hub</span>
+                              </p>
+                              <p class="text-[8px] font-semibold tracking-wide text-slate-400">ADMIN PANEL</p>
+                         </div>
+                    </a>
+
+                    <div class="flex flex-wrap items-center gap-3 text-sm">
+                         <span class="text-slate-300">Signed in as <strong id="adminEmail" class="text-white"></strong></span>
+                         <a href="../index.html" class="rounded-lg border border-white/30 px-3 py-2 font-semibold hover:bg-white/10">View site</a>
+                         <button id="logoutButton" type="button" class="rounded-lg bg-warning px-3 py-2 font-semibold text-menuBar hover:bg-amber-400">Log out</button>
+                    </div>
+               </div>
+          </header>
+
+          <main class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+
+               <div class="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+                    <div>
+                         <p class="text-sm font-semibold text-main">Admin</p>
+                         <h1 class="text-3xl font-bold">Registrations</h1>
+                         <p class="mt-1 text-secondText">All event and club registrations saved in this browser. Updates live.</p>
+                    </div>
+
+                    <button id="exportButton" type="button"
+                         class="rounded-lg bg-main px-4 py-2 font-semibold text-white hover:bg-mainHover">
+                         Export CSV
+                    </button>
+               </div>
+
+               <p id="error" class="mb-6 hidden rounded-lg bg-red-50 px-4 py-3 text-sm text-error ring-1 ring-red-200" role="alert"></p>
+
+               <!-- Statistics -->
+               <div class="mb-6 grid grid-cols-1 gap-4 sm:grid-cols-3">
+                    <div class="rounded-xl bg-white p-5 shadow-sm ring-1 ring-slate-200">
+                         <p class="text-sm text-secondText">Total Registrations</p>
+                         <p id="total" class="mt-1 text-3xl font-bold">0</p>
+                    </div>
+
+                    <div class="rounded-xl bg-white p-5 shadow-sm ring-1 ring-slate-200">
+                         <p class="text-sm text-secondText">Registered Today</p>
+                         <p id="today" class="mt-1 text-3xl font-bold">0</p>
+                    </div>
+
+                    <div class="rounded-xl bg-white p-5 shadow-sm ring-1 ring-slate-200">
+                         <p class="text-sm text-secondText">Latest Registration</p>
+                         <p id="latest" class="mt-1 text-lg font-bold">-</p>
+                    </div>
+               </div>
+
+               <!-- Per event / club counts -->
+               <div class="mb-6 rounded-xl bg-white p-5 shadow-sm ring-1 ring-slate-200">
+                    <p class="mb-3 text-sm font-semibold text-secondText">Registrations by event / club</p>
+                    <div id="eventCounts" class="flex flex-wrap gap-2 text-sm">
+                         <span class="text-secondText">No registrations yet.</span>
+                    </div>
+               </div>
+
+               <!-- Filters -->
+               <div class="mb-4 flex flex-col gap-3 sm:flex-row">
+                    <input id="search" type="search" placeholder="Search name, email, phone or registration no."
+                         class="w-full rounded-lg border border-slate-300 px-3 py-2.5 sm:flex-1">
+                    <select id="eventFilter" class="w-full rounded-lg border border-slate-300 px-3 py-2.5 sm:w-64">
+                         <option value="">All events and clubs</option>
+                    </select>
+               </div>
+
+               <!-- Registration Table -->
+               <div class="overflow-hidden rounded-xl bg-white shadow-sm ring-1 ring-slate-200">
+                    <div class="overflow-x-auto">
+                         <table class="min-w-full text-left text-sm">
+                              <thead class="bg-slate-100 text-slate-700">
+                                   <tr>
+                                        <th class="px-4 py-3 font-semibold">Registration No.</th>
+                                        <th class="px-4 py-3 font-semibold">Name</th>
+                                        <th class="px-4 py-3 font-semibold">Email</th>
+                                        <th class="px-4 py-3 font-semibold">Phone</th>
+                                        <th class="px-4 py-3 font-semibold">Event / Club</th>
+                                        <th class="px-4 py-3 font-semibold">Date</th>
+                                        <th class="px-4 py-3 font-semibold"><span class="sr-only">Actions</span></th>
+                                   </tr>
+                              </thead>
+                              <tbody id="registrationTable"></tbody>
+                         </table>
+                    </div>
+
+                    <p id="empty" class="hidden px-6 py-12 text-center text-secondText">No registrations yet.</p>
+               </div>
+
+               <p id="showing" class="mt-3 text-sm text-secondText"></p>
+
+               <!-- Admin accounts -->
+               <section class="mt-12 rounded-xl bg-white p-5 shadow-sm ring-1 ring-slate-200 sm:p-6">
+                    <h2 class="text-xl font-bold">Admin accounts</h2>
+                    <p class="mt-1 text-sm text-secondText">Everyone listed here can log in and see registrations.</p>
+
+                    <ul id="adminList" class="mt-4 divide-y divide-slate-200 text-sm"></ul>
+
+                    <form id="addAdminForm" class="mt-6 grid gap-3 sm:grid-cols-[1fr_1fr_auto]" novalidate>
+                         <input id="newAdminEmail" type="email" placeholder="New admin email" autocomplete="off"
+                              class="rounded-lg border border-slate-300 px-3 py-2.5">
+                         <input id="newAdminPassword" type="password" placeholder="Password (at least 6 characters)" autocomplete="new-password"
+                              class="rounded-lg border border-slate-300 px-3 py-2.5">
+                         <button type="submit" class="rounded-lg bg-main px-4 py-2.5 font-semibold text-white hover:bg-mainHover">
+                              Add admin
+                         </button>
+                    </form>
+                    <p id="adminMessage" class="mt-3 hidden text-sm"></p>
+               </section>
+          </main>
+     </div>
+
+     <script src="../js/store.js"></script>
+     <script src="../js/admin.js"></script>
+</body>
+
+</html>

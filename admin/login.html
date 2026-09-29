@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta name="robots" content="noindex">
+     <title>CampusHub: Admin Login</title>
+     <script src="https://cdn.tailwindcss.com"></script>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
+     <script>
+          tailwind.config = {
+               theme: {
+                    extend: {
+                         colors: {
+                              main: "#2563EB",
+                              mainHover: "#1D4ED8",
+                              mainLight: "#DBEAFE",
+                              mainText: "#172033",
+                              secondText: "#475569",
+                              menuBar: "#0F172A",
+                              error: "#DC2626",
+                              warning: "#F59E0B",
+                              succes: "#16A34A"
+                         },
+                         fontFamily: {
+                              sans: ["Sora", "sans-serif"]
+                         }
+                    }
+               }
+          }
+     </script>
+     <link rel="stylesheet" href="../css/campushub.css">
+</head>
+
+<body class="flex min-h-screen flex-col bg-menuBar font-sans text-mainText">
+
+     <main class="flex flex-1 items-center justify-center px-4 py-12">
+          <div class="w-full max-w-md">
+
+               <a href="../index.html" class="mb-8 flex items-center justify-center gap-2">
+                    <img src="../image/R1.png" alt="CampusHub Logo" class="h-12 w-12 rounded-lg object-cover">
+                    <div>
+                         <p class="text-base font-bold leading-tight">
+                              <span class="text-succes">Campus</span><span class="text-main">Hub</span>
+                         </p>
+                         <p class="text-[8px] font-semibold tracking-wide text-slate-400">ADMIN PANEL</p>
+                    </div>
+               </a>
+
+               <div class="rounded-2xl bg-white p-6 shadow-xl sm:p-8">
+                    <h1 id="title" class="text-2xl font-bold">Admin Login</h1>
+                    <p id="subtitle" class="mt-1 text-sm text-secondText">Sign in to view student registrations.</p>
+
+                    <p id="message" class="mt-5 hidden rounded-lg px-4 py-3 text-sm" role="alert"></p>
+
+                    <form id="loginForm" class="mt-6 space-y-4" novalidate>
+                         <div>
+                              <label for="email" class="mb-1.5 block text-sm font-semibold">Email</label>
+                              <input id="email" type="email" autocomplete="username" required
+                                   placeholder="admin@example.com"
+                                   class="w-full rounded-lg border border-slate-300 px-3 py-2.5">
+                         </div>
+
+                         <div>
+                              <label for="password" class="mb-1.5 block text-sm font-semibold">Password</label>
+                              <input id="password" type="password" autocomplete="current-password" required
+                                   placeholder="Enter your password"
+                                   class="w-full rounded-lg border border-slate-300 px-3 py-2.5">
+                         </div>
+
+                         <!-- Only shown when creating the first admin account -->
+                         <div id="confirmField" class="hidden">
+                              <label for="confirmPassword" class="mb-1.5 block text-sm font-semibold">Confirm password</label>
+                              <input id="confirmPassword" type="password" autocomplete="new-password"
+                                   placeholder="Enter the password again"
+                                   class="w-full rounded-lg border border-slate-300 px-3 py-2.5">
+                         </div>
+
+                         <button id="submitButton" type="submit"
+                              class="w-full rounded-lg bg-main px-4 py-2.5 font-semibold text-white hover:bg-mainHover">
+                              Log in
+                         </button>
+                    </form>
+               </div>
+
+               <p class="mt-6 text-center text-sm text-slate-400">
+                    <a href="../index.html" class="hover:text-white">← Back to CampusHub</a>
+               </p>
+          </div>
+     </main>
+
+     <script src="../js/store.js"></script>
+     <script>
+          const form = document.getElementById("loginForm");
+          const emailInput = document.getElementById("email");
+          const passwordInput = document.getElementById("password");
+          const confirmInput = document.getElementById("confirmPassword");
+          const message = document.getElementById("message");
+
+          // No admin exists yet on this browser: the form creates the first admin account instead.
+          const setupMode = !CampusHubStore.hasAdmins();
+
+          function showMessage(text, type = "error") {
+               message.textContent = text;
+               message.className = "mt-5 rounded-lg px-4 py-3 text-sm " + (type === "error"
+                    ? "bg-red-50 text-error ring-1 ring-red-200"
+                    : "bg-green-50 text-succes ring-1 ring-green-200");
+          }
+
+          if (CampusHubStore.currentAdmin()) {
+               location.replace("index.html");
+          }
+
+          if (setupMode) {
+               document.getElementById("title").textContent = "Create Admin Account";
+               document.getElementById("subtitle").textContent =
+                    "No admin account exists yet. Create the first one to open the admin dashboard.";
+               document.getElementById("confirmField").classList.remove("hidden");
+               document.getElementById("submitButton").textContent = "Create account";
+               passwordInput.autocomplete = "new-password";
+               passwordInput.placeholder = "At least 6 characters";
+          }
+
+          form.addEventListener("submit", async (event) => {
+               event.preventDefault();
+
+               const email = emailInput.value.trim();
+               const password = passwordInput.value;
+
+               if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                    showMessage("Please enter a valid email address.");
+                    emailInput.focus();
+                    return;
+               }
+
+               if (!password) {
+                    showMessage("Please enter your password.");
+                    passwordInput.focus();
+                    return;
+               }
+
+               try {
+                    if (setupMode) {
+                         if (password.length < 6) {
+                              showMessage("Password must be at least 6 characters.");
+                              passwordInput.focus();
+                              return;
+                         }
+
+                         if (password !== confirmInput.value) {
+                              showMessage("The two passwords do not match.");
+                              confirmInput.focus();
+                              return;
+                         }
+
+                         await CampusHubStore.addAdmin(email, password);
+                    } else if (!await CampusHubStore.checkLogin(email, password)) {
+                         showMessage("Incorrect email or password.");
+                         passwordInput.value = "";
+                         passwordInput.focus();
+                         return;
+                    }
+
+                    CampusHubStore.startSession(email);
+                    location.replace("index.html");
+               } catch (error) {
+                    console.error("Login failed:", error);
+                    showMessage(error.message || "Login failed. Please try again.");
+               }
+          });
+     </script>
+</body>
+
+</html>
